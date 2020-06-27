@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
-import { func } from 'prop-types';
-interface ITabContainerProps {
+
+export interface ITabContainerProps {
   names?: string[];
   btnClassName?: string;
   bodyClassName?: string;

@@ -1,6 +1,6 @@
 {
   "name": "@inneisystem/tab-container",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This wrapper makes a tab element from children components",
   "main": "index.js",
   "scripts": {
