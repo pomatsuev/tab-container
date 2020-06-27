@@ -1,5 +1,5 @@
 {
-  "name": "@pss/tab-container",
+  "name": "@inneisystem/tab-container",
   "version": "1.0.0",
   "description": "This wrapper makes a tab element from children components",
   "main": "index.js",
