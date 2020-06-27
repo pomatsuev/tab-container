@@ -22,8 +22,8 @@ describe('Testing TabContainer component', () => {
     expect(renderResult.find('.tab-container__button').at(1).text()).toBe('default 2');
   });
   it('will be rendered first component', () => {
-    expect(renderResult.find('.tab-containre__content > div').length).toBe(1);
-    expect(renderResult.find('.tab-containre__content > div').text()).toBe('1');
+    expect(renderResult.find('.tab-container__content > div').length).toBe(1);
+    expect(renderResult.find('.tab-container__content > div').text()).toBe('1');
   });
   it('second element will not rendered', () => {
     expect(renderResult.find('h1').length).toBe(0);
@@ -59,6 +59,7 @@ describe('Testing with props', () => {
     );
     expect(renderResult.find('.tab-container__button').at(0).text()).toBe('one');
   });
+
   it('if names prop length are not equal children components count then button are has default names', () => {
     renderResult = shallow(
       <TabContainer names={['one']}>
@@ -79,5 +80,48 @@ describe('Testing with props', () => {
     );
     expect(renderResult.find('.tab-container__button').at(0).text()).toBe('has cation');
     expect(renderResult.find('.tab-container__button').at(1).text()).toBe('default 1');
+  });
+
+  describe('Custom class testing', () => {
+    beforeEach(() => {
+      renderResult = shallow(
+        <TabContainer btnClassName="test-class" bodyClassName="test-class">
+          <h1>1</h1>
+          <h2>2</h2>
+        </TabContainer>
+      );
+    });
+
+    it('add css class to buttons', () => {
+      expect(renderResult.find('.tab-container__buttons').hasClass('test-class')).toBe(true);
+    });
+
+    it('add css class to content', () => {
+      expect(renderResult.find('.tab-container__content').hasClass('test-class')).toBe(true);
+    });
+  });
+
+  describe('callback testing', () => {
+    let callback: jest.Mock;
+
+    beforeEach(() => {
+      callback = jest.fn((a1) => a1);
+      renderResult = shallow(
+        <TabContainer onTabClick={callback}>
+          <h1>1</h1>
+          <h2>2</h2>
+        </TabContainer>
+      );
+    });
+
+    it('if a callback is passed, it must be called', () => {
+      renderResult.find('.tab-container__button').at(0).simulate('click');
+      expect(callback).toBeCalledTimes(1);
+    });
+
+    it('return tab index in callback', () => {
+      renderResult.find('.tab-container__button').at(1).simulate('click');
+      expect(callback.mock.results[0].value).toBe(1);
+    });
   });
 });

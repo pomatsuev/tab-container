@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import '%/components/style.css';
+import './style.css';
+import { func } from 'prop-types';
 interface ITabContainerProps {
   names?: string[];
+  btnClassName?: string;
+  bodyClassName?: string;
+  onTabClick?: (tabIndex: number, evt: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export const TabContainer: React.FC<ITabContainerProps> = ({ children, names }) => {
+export const TabContainer: React.FC<ITabContainerProps> = ({
+  children,
+  names,
+  btnClassName,
+  bodyClassName,
+  onTabClick,
+}) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const elements: React.ReactNodeArray = Array.isArray(children) ? [...children] : [children];
@@ -21,9 +31,16 @@ export const TabContainer: React.FC<ITabContainerProps> = ({ children, names }) 
     });
   }
 
+  function tabClickHandler(tabIndex: number, evt: React.MouseEvent<HTMLDivElement>) {
+    if (onTabClick && typeof onTabClick === 'function') {
+      onTabClick(tabIndex, evt);
+    }
+    setActiveTab(tabIndex);
+  }
+
   return (
     <div className="tab-container">
-      <div className="tab-container__buttons">
+      <div className={addClassToDefault(btnClassName, 'tab-container__buttons')}>
         {tabButtons.map((btn, indx) => {
           return (
             <div
@@ -31,14 +48,20 @@ export const TabContainer: React.FC<ITabContainerProps> = ({ children, names }) 
                 indx === activeTab ? 'tab-container__button_active' : ''
               }`}
               key={btn + indx}
-              onClick={() => setActiveTab(indx)}
+              onClick={tabClickHandler.bind(null, indx)}
             >
               {btn}
             </div>
           );
         })}
       </div>
-      <div className="tab-containre__content">{elements[activeTab]}</div>
+      <div className={addClassToDefault(bodyClassName, 'tab-container__content')}>
+        {elements[activeTab]}
+      </div>
     </div>
   );
 };
+
+function addClassToDefault(className: string | undefined | null, defaultClassName: string) {
+  return (className ? [defaultClassName, className] : [defaultClassName]).join(' ');
+}

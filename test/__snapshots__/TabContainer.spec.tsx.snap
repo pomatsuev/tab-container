@@ -23,7 +23,7 @@ exports[`Testing TabContainer component Component will equal snapshot 1`] = `
     </div>
   </div>
   <div
-    className="tab-containre__content"
+    className="tab-container__content"
   >
     <div>
       1
