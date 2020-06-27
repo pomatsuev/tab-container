@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing TabContainer component Component will equal snapshot 1`] = `
+<div
+  className="tab-container"
+>
+  <div
+    className="tab-container__buttons"
+  >
+    <div
+      className="tab-container__button tab-container__button_active"
+      key="default 10"
+      onClick={[Function]}
+    >
+      default 1
+    </div>
+    <div
+      className="tab-container__button "
+      key="default 21"
+      onClick={[Function]}
+    >
+      default 2
+    </div>
+  </div>
+  <div
+    className="tab-containre__content"
+  >
+    <div>
+      1
+    </div>
+  </div>
+</div>
+`;

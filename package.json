@@ -1,0 +1,52 @@
+{
+  "name": "@pss/tab-container",
+  "version": "1.0.0",
+  "description": "This wrapper makes a tab element from children components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "test": "jest --watchAll"
+  },
+  "author": {
+    "name": "Pomatsuev Stanislav",
+    "email": "pomatsuev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomatsuev/tab-container.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pomatsuev/tab-container/issues"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.3",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "babel-jest": "^26.1.0",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "jest": "^26.1.0",
+    "jest-transform-stub": "^2.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

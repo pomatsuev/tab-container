@@ -1,0 +1,28 @@
+.tab-container {
+  width: 100%;
+}
+.tab-container div {
+  box-sizing: border-box;
+}
+
+.tab-container .tab-container__buttons {
+  display: flex;
+  flex-flow: row;
+}
+
+.tab-container .tab-container__button {
+  cursor: pointer;
+  padding: 0.2rem 1rem;
+  color: gray;
+  display: block;
+}
+
+.tab-container .tab-container__button_active {
+  color: crimson;
+  border-bottom: 2px solid crimson;
+}
+
+.tab-container .tab-containre__content {
+  display: block;
+}
+
