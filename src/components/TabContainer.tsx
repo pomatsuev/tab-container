@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
-
+import '%/components/style.css';
 interface ITabContainerProps {
   names?: string[];
 }

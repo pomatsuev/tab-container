@@ -16,10 +16,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.css'],
+    alias: {
+      '%': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new MiniCSSExtractPlugin({
-      filename: '[name].css',
+      filename: 'style.css',
     }),
   ],
   module: {
