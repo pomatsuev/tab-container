@@ -57,7 +57,7 @@ const App: React.FC = (props) => {
 ...
 ```
 
-You can styling this in your css
+You can styling this in your css [Sandbox Example](https://codesandbox.io/s/tab-container-o6rnq)
 
 ```html
 <div class="tab-container">
@@ -65,7 +65,7 @@ You can styling this in your css
     <div class="tab-container__button tab-container__button_active">FIRST CAPTION</div>
     <div class="tab-container__button ">SECOND CAPTION</div>
   </div>
-  <div class="tab-containre__content"><div>FIRST TAB</div></div>
+  <div class="tab-container__content"><div>FIRST TAB</div></div>
 </div>
 ```
 
