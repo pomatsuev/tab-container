@@ -6,6 +6,7 @@ export interface ITabContainerProps {
   btnClassName?: string;
   bodyClassName?: string;
   onTabClick?: (tabIndex: number, evt: React.MouseEvent<HTMLDivElement>) => void;
+  onTabChange?: (prevIndex: number, nextIndex: number) => void;
 }
 
 export const TabContainer: React.FC<ITabContainerProps> = ({
@@ -14,6 +15,7 @@ export const TabContainer: React.FC<ITabContainerProps> = ({
   btnClassName,
   bodyClassName,
   onTabClick,
+  onTabChange,
 }) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
@@ -32,10 +34,14 @@ export const TabContainer: React.FC<ITabContainerProps> = ({
   }
 
   function tabClickHandler(tabIndex: number, evt: React.MouseEvent<HTMLDivElement>) {
-    if (onTabClick && typeof onTabClick === 'function') {
-      onTabClick(tabIndex, evt);
-    }
-    setActiveTab(tabIndex);
+    onTabClick && typeof onTabClick === 'function' && onTabClick(tabIndex, evt);
+    setActiveTab((old) => {
+      onTabChange &&
+        typeof onTabChange === 'function' &&
+        old !== tabIndex &&
+        onTabChange(old, tabIndex);
+      return tabIndex;
+    });
   }
 
   return (

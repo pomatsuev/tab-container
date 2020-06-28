@@ -103,25 +103,41 @@ describe('Testing with props', () => {
 
   describe('callback testing', () => {
     let callback: jest.Mock;
-
+    let callback2: jest.Mock;
     beforeEach(() => {
       callback = jest.fn((a1) => a1);
+      callback2 = jest.fn((a1, a2) => [a1, a2]);
       renderResult = shallow(
-        <TabContainer onTabClick={callback}>
+        <TabContainer onTabClick={callback} onTabChange={callback2}>
           <h1>1</h1>
           <h2>2</h2>
         </TabContainer>
       );
     });
 
-    it('if a callback is passed, it must be called', () => {
+    it('if a onTabClick is passed, it must be called', () => {
       renderResult.find('.tab-container__button').at(0).simulate('click');
       expect(callback).toBeCalledTimes(1);
     });
 
-    it('return tab index in callback', () => {
+    it('return tab index in onTabClick', () => {
       renderResult.find('.tab-container__button').at(1).simulate('click');
       expect(callback.mock.results[0].value).toBe(1);
+    });
+
+    it('if a onTabChange is passed, it must be called', () => {
+      renderResult.find('.tab-container__button').at(1).simulate('click');
+      expect(callback2).toBeCalledTimes(1);
+    });
+
+    it('passed old tab index and new tab index in to onTabChange', () => {
+      renderResult.find('.tab-container__button').at(1).simulate('click');
+      expect(callback2.mock.results[0].value).toStrictEqual([0, 1]);
+    });
+
+    it('if click on active tab button, onTabChange not to be called', () => {
+      renderResult.find('.tab-container__button').at(0).simulate('click');
+      expect(callback2).not.toBeCalled();
     });
   });
 });
