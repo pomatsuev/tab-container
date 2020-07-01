@@ -16,13 +16,14 @@ yarn add @inneisystem/tab-container
 
 ## Props
 
-| prop            | description                                                |
-| --------------- | ---------------------------------------------------------- |
-| `names`         | `array - array of names for tabs`                          |
-| `btnClassName`  | `string - add class to tabs list element`                  |
-| `bodyClassName` | `string - add class to content element`                    |
-| `onTabClick`    | `function - callback called each click on tab`             |
-| `onTabChange`   | `function - callback called only when tab will be changed` |
+| prop            | description                                                                        |
+| --------------- | ---------------------------------------------------------------------------------- |
+| `names`         | `array - array of names for tabs`                                                  |
+| `btnClassName`  | `string - add class to tabs list element`                                          |
+| `bodyClassName` | `string - add class to content element`                                            |
+| `onTabClick`    | `function - callback called each click on tab`                                     |
+| `onTabChange`   | `function - callback called only when tab will be changed`                         |
+| `style`         | `object { button, buttons, content, container } - contains styles of all elements` |
 
 ## Example
 

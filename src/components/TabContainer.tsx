@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './style.css';
 
+export type TabContainerStyleType = {
+  buttons?: React.CSSProperties;
+  content?: React.CSSProperties;
+  button?: React.CSSProperties;
+  container?: React.CSSProperties;
+};
 export interface ITabContainerProps {
   names?: string[];
   btnClassName?: string;
   bodyClassName?: string;
   onTabClick?: (tabIndex: number, evt: React.MouseEvent<HTMLDivElement>) => void;
   onTabChange?: (prevIndex: number, nextIndex: number) => void;
+  style?: TabContainerStyleType;
 }
 
 export const TabContainer: React.FC<ITabContainerProps> = ({
@@ -16,6 +23,7 @@ export const TabContainer: React.FC<ITabContainerProps> = ({
   bodyClassName,
   onTabClick,
   onTabChange,
+  style,
 }) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
@@ -45,8 +53,11 @@ export const TabContainer: React.FC<ITabContainerProps> = ({
   }
 
   return (
-    <div className="tab-container">
-      <div className={addClassToDefault(btnClassName, 'tab-container__buttons')}>
+    <div className="tab-container" style={style?.container || {}}>
+      <div
+        className={addClassToDefault(btnClassName, 'tab-container__buttons')}
+        style={style?.buttons || {}}
+      >
         {tabButtons.map((btn, indx) => {
           return (
             <div
@@ -55,13 +66,17 @@ export const TabContainer: React.FC<ITabContainerProps> = ({
               }`}
               key={btn + indx}
               onClick={tabClickHandler.bind(null, indx)}
+              style={style?.button || {}}
             >
               {btn}
             </div>
           );
         })}
       </div>
-      <div className={addClassToDefault(bodyClassName, 'tab-container__content')}>
+      <div
+        className={addClassToDefault(bodyClassName, 'tab-container__content')}
+        style={style?.content || {}}
+      >
         {elements[activeTab]}
       </div>
     </div>

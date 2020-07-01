@@ -3,14 +3,17 @@
 exports[`Testing TabContainer component Component will equal snapshot 1`] = `
 <div
   className="tab-container"
+  style={Object {}}
 >
   <div
     className="tab-container__buttons"
+    style={Object {}}
   >
     <div
       className="tab-container__button tab-container__button_active"
       key="default 10"
       onClick={[Function]}
+      style={Object {}}
     >
       default 1
     </div>
@@ -18,12 +21,14 @@ exports[`Testing TabContainer component Component will equal snapshot 1`] = `
       className="tab-container__button "
       key="default 21"
       onClick={[Function]}
+      style={Object {}}
     >
       default 2
     </div>
   </div>
   <div
     className="tab-container__content"
+    style={Object {}}
   >
     <div>
       1

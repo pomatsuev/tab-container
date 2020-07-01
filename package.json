@@ -1,6 +1,6 @@
 {
   "name": "@inneisystem/tab-container",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This wrapper makes a tab element from children components",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,9 @@
   },
   "bugs": {
     "url": "https://github.com/pomatsuev/tab-container/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "license": "ISC",
   "devDependencies": {

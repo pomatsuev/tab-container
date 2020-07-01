@@ -2,6 +2,7 @@ import { TabContainer } from '../src/components/TabContainer';
 import { shallow, ShallowWrapper } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import React from 'react';
+import { TabContainerStyleType } from '..';
 
 let renderResult: ShallowWrapper;
 
@@ -138,6 +139,30 @@ describe('Testing with props', () => {
     it('if click on active tab button, onTabChange not to be called', () => {
       renderResult.find('.tab-container__button').at(0).simulate('click');
       expect(callback2).not.toBeCalled();
+    });
+  });
+
+  describe('testing style prop, inline react styles', () => {
+    beforeEach(() => {
+      let style: TabContainerStyleType = {
+        button: { fontSize: '50px' },
+      };
+      renderResult = shallow(
+        <TabContainer style={style}>
+          <h1>1</h1>
+          <h2>2</h2>
+        </TabContainer>
+      );
+    });
+
+    it('if style are passed, element must contain this style', () => {
+      expect(renderResult.find('.tab-container__button').at(0).prop('style')).toHaveProperty(
+        'fontSize',
+        '50px'
+      );
+    });
+    it('if style are not passed, the element must not contain styles', () => {
+      expect(renderResult.find('.tab-container__buttons').prop('style')).toStrictEqual({});
     });
   });
 });
