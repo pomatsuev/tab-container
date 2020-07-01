@@ -20,9 +20,6 @@
   "bugs": {
     "url": "https://github.com/pomatsuev/tab-container/issues"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.10.3",
